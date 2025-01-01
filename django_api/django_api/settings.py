@@ -24,9 +24,11 @@ SECRET_KEY = 'django-insecure-!2q#b-k1ykc=2c&qt0pr#tf8e#hfa3oa_lu($x_b74rv+hy_(v
 import environ
 
 env = environ.Env()
-environ.Env.read_env()
+envfile = str(BASE_DIR) + '\\.env'
+environ.Env.read_env(env_file=envfile)
+import os
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')  # значение SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
